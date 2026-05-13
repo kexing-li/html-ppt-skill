@@ -1,13 +1,18 @@
 ---
-name: html-ppt
-description: HTML PPT Studio — author professional static HTML presentations in many styles, layouts, and animations, all driven by templates. Use when the user asks for a presentation, PPT, slides, keynote, deck, slideshow, "幻灯片", "演讲稿", "做一份 PPT", "做一份 slides", a reveal-style HTML deck, a 小红书 图文, or any kind of multi-slide pitch/report/sharing document that should look tasteful and be usable with keyboard navigation. Triggers include keywords like "presentation", "ppt", "slides", "deck", "keynote", "reveal", "slideshow", "幻灯片", "演讲稿", "分享稿", "小红书图文", "talk slides", "pitch deck", "tech sharing", "technical presentation".
+name: html-studio
+description: HTML Studio — author professional static HTML presentations AND website prototype pages, all driven by a shared token-based design system with 36 themes. Use when the user asks for a presentation, PPT, slides, keynote, deck, slideshow, "幻灯片", "演讲稿", "做一份 PPT", "做一份 slides", a reveal-style HTML deck, a 小红书 图文, or any kind of multi-slide pitch/report/sharing document. Also use when the user asks for a website prototype, landing page, HTML page, web page, "网页", "网站", "原型", "做一个网页", "网站原型", "landing page", "website", "prototype", "HTML 页面", or any kind of static web page that should look polished. Two modes: **Deck** (keyboard-navigated slide presentations) and **Page** (document-flow web pages with responsive layout).
 ---
 
-# html-ppt — HTML PPT Studio
+# html-studio — HTML Studio
 
-Author professional HTML presentations as static files. One theme file = one
-look. One layout file = one page type. One animation class = one entry effect.
-All pages share a token-based design system in `assets/base.css`.
+Author professional HTML output as static files. Two modes:
+
+- **Deck mode** — keyboard-navigated slide presentations (PPT)
+- **Page mode** — document-flow website prototype pages
+
+Both modes share the same design system: 36 themes, CSS tokens, typography,
+cards, layout primitives, and animations. One theme file = one look across
+both modes.
 
 ## Install
 
@@ -24,6 +29,7 @@ One command, no build. Pure static HTML/CSS/JS with only CDN webfonts.
 - **31 layouts** (`templates/single-page/*.html`) with realistic demo data
 - **27 CSS animations** (`assets/animations/animations.css`) via `data-anim`
 - **20 canvas FX animations** (`assets/animations/fx/*.js`) via `data-fx` — particle-burst, confetti-cannon, firework, starfield, matrix-rain, knowledge-graph (force-directed), neural-net (pulses), constellation, orbit-ring, galaxy-swirl, word-cascade, letter-explode, chain-react, magnetic-field, data-stream, gradient-blob, sparkle-trail, shockwave, typewriter-multi, counter-explosion
+- **Page layout system** (`assets/page.css`) — document-flow containers, sections, responsive grid, navbar, footer, prose typography
 - **Keyboard runtime** (`assets/runtime.js`) — arrows, T (theme), A (anim), F/O, **S (presenter mode: magnetic-card popup with CURRENT / NEXT / SCRIPT / TIMER cards)**, N (notes drawer), R (reset timer in presenter)
 - **FX runtime** (`assets/animations/fx-runtime.js`) — auto-inits `[data-fx]` on slide enter, cleans up on leave
 - **Showcase decks** for themes / layouts / animations / full-decks gallery
@@ -31,10 +37,13 @@ One command, no build. Pure static HTML/CSS/JS with only CDN webfonts.
 
 ## When to use
 
-Use when the user asks for any kind of slide-based output or wants to turn
-text/notes into a presentable deck. Prefer this over building from scratch.
+**Deck mode:** when the user asks for any kind of slide-based output or wants to
+turn text/notes into a presentable deck.
 
-### 🎤 Presenter Mode (演讲者模式 + 逐字稿)
+**Page mode:** when the user asks for a website prototype, landing page, product
+page, dashboard, portfolio, or any document-flow HTML page.
+
+### 🎤 Presenter Mode (演讲者模式 + 逐字稿) — Deck mode only
 
 If the user mentions any of: **演讲 / 分享 / 讲稿 / 逐字稿 / speaker notes / presenter view / 演讲者视图 / 提词器**, or says things like "我要去给团队讲 xxx", "要做一场技术分享", "怕讲不流畅", "想要一份带逐字稿的 PPT" — **use the `presenter-mode-reveal` full-deck template** and write 150–300 words of 逐字稿 in each slide's `<aside class="notes">`.
 
@@ -62,9 +71,19 @@ Keyboard in audience window: `S` open presenter · `T` cycle theme · `← →` 
 
 ## Before you author anything — ALWAYS ask or recommend
 
-**Do not start writing slides until you understand three things.** Either ask
+**Do not start writing anything until you understand these things.** Either ask
 the user directly, or — if they already handed you rich content — propose a
 tasteful default and confirm.
+
+**Step 0: Deck or Page?**
+Determine whether the user wants a slide presentation (Deck mode) or a website
+prototype page (Page mode). If the intent is ambiguous, ask:
+
+> 你想要的是一份 **演示 PPT**（幻灯片翻页），还是一个 **网页原型**（正常滚动的网页）？
+
+**Then follow the mode-specific flow below.**
+
+### Deck mode — what to ask
 
 1. **Content & audience.** What's the deck about, how many slides, who's
    watching (engineers / execs / 小红书读者 / 学生 / VC)?
@@ -83,16 +102,28 @@ tasteful default and confirm.
    user's content suggests something obvious (e.g. "我要做产品发布会" →
    `product-launch`), propose it confidently instead of asking blindly.
 
-A good opening message looks like:
+### Page mode — what to ask
 
-> 我可以给你做这份 PPT！先确认三件事：
-> 1. 大致内容 / 页数 / 观众是谁？
-> 2. 风格偏好？我建议从这 3 个主题里选一个：`tokyo-night`（技术分享默认好看）、`xiaohongshu-white`（小红书风）、`corporate-clean`（正式汇报）。
-> 3. 要不要用我现成的 `tech-sharing` 全 deck 模板打底？
+1. **Content & purpose.** What's the page for (landing page, dashboard,
+   portfolio, product page…)? Who's the audience?
+2. **Style / theme.** Recommend 2-3 themes based on page type:
+   - Product / landing page → `minimal-white`, `soft-pastel`, `corporate-clean`
+   - Developer docs / dashboard → `tokyo-night`, `dracula`, `catppuccin-mocha`
+   - Portfolio / creative → `editorial-serif`, `magazine-bold`, `neo-brutalism`
+   - Marketing / startup → `pitch-deck-vc`, `aurora`, `rainbow-gradient`
+3. **Output format.** Self-contained single HTML file, or multi-file referencing
+   shared assets?
 
-Only after those are clear, scaffold the deck and start writing.
+A good opening message for Page mode:
 
-## Quick start
+> 我可以给你做这个网页原型！先确认几件事：
+> 1. 页面用途和目标用户？
+> 2. 风格偏好？我建议：`minimal-white`（简洁大方）、`tokyo-night`（技术感）、`aurora`（现代渐变）。
+> 3. 输出要单个自包含 HTML 文件，还是引用共享的样式资源？
+
+Only after those are clear, start writing.
+
+## Deck mode — Quick start
 
 1. **Scaffold a new deck.** From the repo root:
    ```bash
@@ -122,7 +153,86 @@ Only after those are clear, scaffold the deck and start writing.
    ./scripts/render.sh examples/my-talk/index.html 12      # 12 slides
    ```
 
-## Authoring rules (important)
+## Page mode — Quick start
+
+1. **Create a new HTML file** (e.g. `examples/my-page/index.html`).
+2. **Link the asset chain:**
+   ```html
+   <link rel="stylesheet" href="../../assets/fonts.css">
+   <link rel="stylesheet" href="../../assets/base.css">
+   <link rel="stylesheet" href="../../assets/page.css">
+   <link rel="stylesheet" href="../../assets/themes/minimal-white.css">
+   ```
+3. **Build with sections and base.css components:**
+   ```html
+   <body>
+     <nav class="navbar navbar-sticky">
+       <strong>Brand</strong>
+       <div class="row" style="gap:1.5rem">
+         <a href="#">Features</a>
+         <a href="#">Pricing</a>
+       </div>
+     </nav>
+     <main class="page">
+       <section class="section section-hero">
+         <div class="center" style="flex-direction:column">
+           <h1 class="h1 gradient-text">Hero Title</h1>
+           <p class="lede">Subtitle text goes here</p>
+         </div>
+       </section>
+       <section class="section">
+         <div class="grid g3">
+           <div class="card card-hover">Feature 1</div>
+           <div class="card card-hover">Feature 2</div>
+           <div class="card card-hover">Feature 3</div>
+         </div>
+       </section>
+     </main>
+     <footer class="page-footer page">© 2026 Brand</footer>
+   </body>
+   ```
+4. **Do NOT include `runtime.js`** — it's for slide decks only.
+5. **Optionally add CSS animations** — link `animations.css` and use
+   `class="anim-fade-up"` on elements.
+
+Full component catalog: [references/page-components.md](references/page-components.md).
+
+## Page mode — self-contained single file
+
+For a single HTML file with no external dependencies (except CDN fonts),
+inline all CSS into `<style>` tags:
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page Title</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+    /* === base.css tokens (copy :root block) === */
+    /* === base.css reset + typography + layout + cards (skip slide system / chrome / presenter) === */
+    /* === page.css (full file) === */
+    /* === theme overrides (chosen theme's :root block) === */
+    /* === animations.css (optional) === */
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-sticky">...</nav>
+  <main class="page">...</main>
+  <footer class="page-footer page">...</footer>
+</body>
+</html>
+```
+
+When inlining base.css, **skip** the slide system (`.deck`, `.slide`, `.is-active`,
+`.is-prev`), chrome (`.deck-header`, `.deck-footer`, `.slide-number`, `.progress-bar`),
+presenter/overview (`.notes`, `.notes-overlay`, `.overview`), and print styles.
+Only include: `:root` tokens, reset, typography, layout primitives, cards, pills,
+dividers, and utilities.
+
+## Authoring rules — Deck mode
 
 - **Always start from a template.** Don't author slides from scratch — copy the
   closest layout from `templates/single-page/` first, then replace content.
@@ -146,6 +256,26 @@ Only after those are clear, scaffold the deck and start writing.
   by default — it only appears in the S overlay. Slides should contain ONLY
   audience-facing content (titles, bullet points, data, charts, images).
 
+## Authoring rules — Page mode
+
+- **Use `.page` containers, not `.deck`.** Structure is `<main class="page">` with
+  `<section class="section">` children.
+- **Use tokens, not literal colors.** Same rule as Deck mode — `var(--text-1)`,
+  `var(--accent)`, `var(--bg-soft)`, etc. Never hard-code hex values.
+- **Use base.css components freely.** `.card`, `.grid`, `.row`, `.stack`, `.pill`,
+  `.h1`–`.h4`, `.lede`, `.gradient-text` — all work in page mode.
+- **Add `page.css` for layout.** Link `assets/page.css` after `base.css`.
+- **Do NOT include `runtime.js`.** It's for slide keyboard navigation and has
+  no purpose in page mode.
+- **Do NOT use `.slide`, `.deck`, or deck chrome classes.** They are for
+  presentations only.
+- **Responsive grids are automatic.** `page.css` adds breakpoints to `.grid`/`.row`
+  so they collapse on mobile. No extra classes needed.
+- **Use `.prose` for long text.** Wrap articles, documentation, or any long-form
+  content in `<article class="prose">` for automatic typography.
+- **Canvas FX are deck-only.** `data-fx` and `fx-runtime.js` depend on slide
+  lifecycle. CSS animations (`data-anim` / `class="anim-*"`) work in both modes.
+
 ## Writing guide
 
 See [references/authoring-guide.md](references/authoring-guide.md) for a
@@ -156,29 +286,31 @@ Chinese + English deck, and how to export.
 ## Catalogs (load when needed)
 
 - [references/themes.md](references/themes.md) — all 36 themes with when-to-use.
-- [references/layouts.md](references/layouts.md) — all 31 layout types.
+- [references/layouts.md](references/layouts.md) — all 31 layout types (Deck mode).
 - [references/animations.md](references/animations.md) — 27 CSS + 20 canvas FX animations.
 - [references/full-decks.md](references/full-decks.md) — all 15 full-deck templates.
 - [references/presenter-mode.md](references/presenter-mode.md) — **演讲者模式 + 逐字稿编写指南（技术分享/演讲必看）**.
-- [references/authoring-guide.md](references/authoring-guide.md) — full workflow.
+- [references/authoring-guide.md](references/authoring-guide.md) — full workflow (Deck mode).
+- [references/page-components.md](references/page-components.md) — **page.css 组件目录（Page mode）**.
 
 ## File structure
 
 ```
-html-ppt/
+html-studio/
 ├── SKILL.md                 (this file)
 ├── references/              (detailed catalogs, load as needed)
 ├── assets/
-│   ├── base.css             (tokens + primitives — do not edit per deck)
+│   ├── base.css             (tokens + primitives — shared by both modes)
+│   ├── page.css             (page-mode layout: containers, sections, responsive, navbar, footer, prose)
 │   ├── fonts.css            (webfont imports)
-│   ├── runtime.js           (keyboard + presenter + overview + theme cycle)
-│   ├── themes/*.css         (36 token overrides, one per theme)
+│   ├── runtime.js           (keyboard + presenter + overview + theme cycle — Deck mode only)
+│   ├── themes/*.css         (36 token overrides, one per theme — shared by both modes)
 │   └── animations/
-│       ├── animations.css   (27 named CSS entry animations)
-│       ├── fx-runtime.js    (auto-init [data-fx] on slide enter)
-│       └── fx/*.js          (20 canvas FX modules: particles/graph/fireworks…)
+│       ├── animations.css   (27 named CSS entry animations — shared by both modes)
+│       ├── fx-runtime.js    (auto-init [data-fx] on slide enter — Deck mode only)
+│       └── fx/*.js          (20 canvas FX modules — Deck mode only)
 ├── templates/
-│   ├── deck.html                  (minimal 6-slide starter)
+│   ├── deck.html                  (minimal 6-slide starter — Deck mode)
 │   ├── theme-showcase.html        (36 slides, iframe-isolated per theme)
 │   ├── layout-showcase.html       (iframe tour of all 31 layouts)
 │   ├── animation-showcase.html    (20 FX + 27 CSS animation slides)
@@ -191,7 +323,7 @@ html-ppt/
 └── examples/demo-deck/            (complete working deck)
 ```
 
-## Rendering to PNG
+## Rendering to PNG (Deck mode)
 
 `scripts/render.sh` wraps headless Chrome at
 `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`. For multi-slide
@@ -202,7 +334,7 @@ capture, runtime.js exposes `#/N` deep-links, and render.sh iterates 1..N.
 ./scripts/render.sh examples/demo-deck/index.html 8 out-dir    # 8 slides, custom dir
 ```
 
-## Keyboard cheat sheet
+## Keyboard cheat sheet (Deck mode)
 
 ```
 ←  →  Space  PgUp  PgDn  Home  End    navigate
