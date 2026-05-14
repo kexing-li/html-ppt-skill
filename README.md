@@ -1,7 +1,9 @@
-# html-ppt — HTML PPT Studio
+# html-studio — HTML Studio
 
-> A world-class AgentSkill for producing professional HTML presentations in
-> **36 themes**, **15 full-deck templates**, **31 page layouts**,
+> A world-class AgentSkill for producing professional HTML presentations
+> AND website prototypes. Two modes: **Deck mode** (slide presentations)
+> and **Page mode** (website prototype pages). **36 themes**,
+> **15 full-deck templates**, **31 page layouts**,
 > **47 animations** (27 CSS + 20 canvas FX), and a **true presenter mode**
 > with pixel-perfect previews + speaker script + timer — all pure static
 > HTML/CSS/JS, no build step.
@@ -56,6 +58,8 @@ that supports AgentSkills can author presentations by asking things like:
 > "做一份 8 页的技术分享 slides，用 cyberpunk 主题"
 > "turn this outline into a pitch deck"
 > "做一个小红书图文，9 张，白底柔和风"
+> "make a landing page with tokyo-night theme"
+> "make a product page with a navbar and feature cards"
 
 ## What's in the box
 
@@ -69,6 +73,7 @@ that supports AgentSkills can author presentations by asking things like:
 | 💥 **Canvas FX animations** | **20** | `assets/animations/fx/*.js` |
 | 🖼️ **Showcase decks** | 4 | `templates/*-showcase.html` |
 | 📸 **Verification screenshots** | 56 | `scripts/verify-output/` |
+| 🌐 **Page layout system** | **NEW** | `assets/page.css` |
 
 ### 36 Themes
 
@@ -163,6 +168,9 @@ open templates/full-decks-index.html       # all 14 full decks
 # Render any template to PNG via headless Chrome
 ./scripts/render.sh templates/theme-showcase.html
 ./scripts/render.sh examples/my-talk/index.html 12
+
+# Bundle into a single self-contained file (all CSS/JS inlined, fully offline)
+./scripts/bundle.sh examples/my-talk/index.html
 ```
 
 ## Keyboard cheat sheet
@@ -191,9 +199,12 @@ html-ppt-skill/
 │   ├── layouts.md                31 layout types
 │   ├── animations.md             27 CSS + 20 FX catalog
 │   ├── full-decks.md             14 full-deck templates
-│   └── authoring-guide.md        full workflow
+│   ├── presenter-mode.md         🎤 presenter mode + speaker script guide
+│   ├── authoring-guide.md        full workflow
+│   └── page-components.md        🌐 Page mode component catalog
 ├── assets/
 │   ├── base.css                  shared tokens + primitives
+│   ├── page.css                  Page mode layout (containers/sections/navbar/footer/prose)
 │   ├── fonts.css                 webfont imports
 │   ├── runtime.js                keyboard + presenter + overview
 │   ├── themes/*.css              36 theme token files
@@ -212,6 +223,7 @@ html-ppt-skill/
 ├── scripts/
 │   ├── new-deck.sh               scaffold
 │   ├── render.sh                 headless Chrome → PNG
+│   ├── bundle.sh                 pack into single self-contained file
 │   └── verify-output/            56 self-test screenshots
 └── examples/demo-deck/           complete working deck
 ```
