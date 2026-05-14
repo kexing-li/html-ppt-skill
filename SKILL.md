@@ -97,10 +97,10 @@ prototype page (Page mode). If the intent is ambiguous, ask:
    - Academic / report → `academic-paper`, `editorial-serif`, `minimal-white`
    - Edgy / cyber / launch → `cyberpunk-neon`, `vaporwave`, `y2k-chrome`,
      `neo-brutalism`
-3. **Starting point.** One of the 14 full-deck templates, or scratch? Point
-   to the closest `templates/full-decks/<name>/` and ask if it fits. If the
-   user's content suggests something obvious (e.g. "我要做产品发布会" →
-   `product-launch`), propose it confidently instead of asking blindly.
+3. **Starting point.** Default is `knowledge-arch-blueprint` (暗底 + 蓝图风，
+   适合技术分享和产品介绍). If the user's content points to a specific
+   scenario (e.g. "产品发布会" → `product-launch`, "投资人 pitch" →
+   `pitch-deck`), use that instead. Otherwise stick with the default.
 
 ### Page mode — what to ask
 
