@@ -1,0 +1,19 @@
+/* theme: netease-qa — 网易红暖色系 */
+:root{
+  --bg:#ffffff;--bg-soft:#fdf8f5;--surface:#ffffff;--surface-2:#faf6f3;
+  --border:rgba(150,30,40,.1);--border-strong:rgba(150,30,40,.24);
+  --text-1:#2d1a10;--text-2:#5c4540;--text-3:#9c8278;
+  --accent:#C41230;--accent-2:#D94E5A;--accent-3:#BF7230;
+  --good:#1a8a5c;--warn:#E08A00;--bad:#EE1212;
+  --grad:linear-gradient(135deg,#C41230,#D94E5A 55%,#EE6E4A);
+  --grad-soft:linear-gradient(135deg,#faf6f3,#fcf0eb);
+  --radius:6px;--radius-sm:4px;--radius-lg:10px;
+  --shadow:0 1px 3px rgba(150,30,40,.06),0 4px 12px rgba(150,30,40,.04);
+  --shadow-lg:0 4px 12px rgba(150,30,40,.08),0 16px 40px rgba(150,30,40,.06);
+  --font-sans:'Inter','Noto Sans SC',sans-serif;
+  --font-display:'Inter','Noto Sans SC',sans-serif;
+}
+.card{border:1px solid var(--border)}
+.divider-accent{background:var(--accent);height:3px;width:56px}
+.kicker{color:var(--accent-2)}
+h1.title,h2.title,.h1,.h2{font-weight:700;color:var(--accent)}
