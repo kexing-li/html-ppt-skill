@@ -1,6 +1,7 @@
-# html-ppt · HTML PPT 工作室
+# html-studio · HTML 工作室
 
-> 一款专业级的 AgentSkill，让 AI 做出真正能打的 HTML 演示文稿。
+> 一款专业级的 AgentSkill，让 AI 做出真正能打的 HTML 演示文稿和网站原型。
+> 双模式：**Deck 模式**（幻灯片演示）+ **Page 模式**（网站原型页面）。
 > **36 套主题**、**15 套完整 deck 模板**、**31 种页面布局**、**47 个动效**
 > (27 个 CSS + 20 个 Canvas FX)，加上全新的 **演讲者模式** —— 像素级
 > 完美预览 + 逐字稿提词器 + 计时器。纯静态 HTML/CSS/JS，无需构建。
@@ -53,6 +54,8 @@ npx skills add https://github.com/lewislulu/html-ppt-skill
 > "把这段 outline 变成投资人 pitch deck"
 > "做一个小红书图文，9 张，白底柔和风"
 > "做一份带演讲者模式的产品分享，我想要有逐字稿"
+> "做一个 landing page，用 tokyo-night 主题"
+> "做一个产品介绍页，有导航栏和特性卡片"
 
 ## Skill 内容一览
 
@@ -66,6 +69,7 @@ npx skills add https://github.com/lewislulu/html-ppt-skill
 | 💥 **Canvas FX 动画** | **20** | `assets/animations/fx/*.js` |
 | 🖼️ **Showcase deck** | 4 | `templates/*-showcase.html` |
 | 📸 **验证截图** | 56 | `scripts/verify-output/` |
+| 🌐 **Page 布局系统** | **新增** | `assets/page.css` |
 
 ### 36 套主题
 
@@ -166,6 +170,9 @@ open templates/full-decks-index.html       # 全部 15 个完整 deck
 # 用 headless Chrome 导出 PNG
 ./scripts/render.sh templates/theme-showcase.html
 ./scripts/render.sh examples/my-talk/index.html 12
+
+# 打包成单文件（所有 CSS/JS inline，完全离线可用）
+./scripts/bundle.sh examples/my-talk/index.html
 ```
 
 ## 键盘快捷键
@@ -196,9 +203,11 @@ html-ppt-skill/
 │   ├── animations.md             27 CSS + 20 FX 目录
 │   ├── full-decks.md             15 完整 deck 模板
 │   ├── presenter-mode.md         🎤 演讲者模式 + 逐字稿指南
-│   └── authoring-guide.md        完整工作流
+│   ├── authoring-guide.md        完整工作流
+│   └── page-components.md        🌐 Page 模式组件目录
 ├── assets/
 │   ├── base.css                  共享 tokens + 基础组件
+│   ├── page.css                  Page 模式布局（容器/section/navbar/footer/prose）
 │   ├── fonts.css                 web 字体引入
 │   ├── runtime.js                键盘导航 + 演讲者模式 + 总览
 │   ├── themes/*.css              36 主题 token 文件
@@ -217,6 +226,7 @@ html-ppt-skill/
 ├── scripts/
 │   ├── new-deck.sh               脚手架
 │   ├── render.sh                 headless Chrome → PNG
+│   ├── bundle.sh                 打包成单文件（全部 CSS/JS inline）
 │   └── verify-output/            56 张自测截图
 └── examples/demo-deck/           完整可运行的示例 deck
 ```
