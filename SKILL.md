@@ -1,6 +1,6 @@
 ---
 name: html-studio
-description: HTML Studio — author professional static HTML presentations AND website prototype pages, all driven by a shared token-based design system with 36 themes. Use when the user asks for a presentation, PPT, slides, keynote, deck, slideshow, "幻灯片", "演讲稿", "做一份 PPT", "做一份 slides", a reveal-style HTML deck, a 小红书 图文, or any kind of multi-slide pitch/report/sharing document. Also use when the user asks for a website prototype, landing page, HTML page, web page, "网页", "网站", "原型", "做一个网页", "网站原型", "landing page", "website", "prototype", "HTML 页面", or any kind of static web page that should look polished. Two modes: **Deck** (keyboard-navigated slide presentations) and **Page** (document-flow web pages with responsive layout).
+description: HTML Studio — author professional static HTML presentations AND website prototype pages, all driven by a shared token-based design system with 37 themes. Use when the user asks for a presentation, PPT, slides, keynote, deck, slideshow, "幻灯片", "演讲稿", "做一份 PPT", "做一份 slides", a reveal-style HTML deck, a 小红书 图文, or any kind of multi-slide pitch/report/sharing document. Also use when the user asks for a website prototype, landing page, HTML page, web page, "网页", "网站", "原型", "做一个网页", "网站原型", "landing page", "website", "prototype", "HTML 页面", or any kind of static web page that should look polished. Two modes: **Deck** (keyboard-navigated slide presentations) and **Page** (document-flow web pages with responsive layout).
 ---
 
 # html-studio — HTML Studio
@@ -10,21 +10,13 @@ Author professional HTML output as static files. Two modes:
 - **Deck mode** — keyboard-navigated slide presentations (PPT)
 - **Page mode** — document-flow website prototype pages
 
-Both modes share the same design system: 36 themes, CSS tokens, typography,
+Both modes share the same design system: 37 themes, CSS tokens, typography,
 cards, layout primitives, and animations. One theme file = one look across
 both modes.
 
-## Install
-
-```bash
-npx skills add https://github.com/lewislulu/html-ppt-skill
-```
-
-One command, no build. Pure static HTML/CSS/JS with only CDN webfonts.
-
 ## What the skill gives you
 
-- **36 themes** (`assets/themes/*.css`) — minimal-white, editorial-serif, soft-pastel, sharp-mono, arctic-cool, sunset-warm, catppuccin-latte/mocha, dracula, tokyo-night, nord, solarized-light, gruvbox-dark, rose-pine, neo-brutalism, glassmorphism, bauhaus, swiss-grid, terminal-green, xiaohongshu-white, rainbow-gradient, aurora, blueprint, memphis-pop, cyberpunk-neon, y2k-chrome, retro-tv, japanese-minimal, vaporwave, midcentury, corporate-clean, academic-paper, news-broadcast, pitch-deck-vc, magazine-bold, engineering-whiteprint
+- **37 themes** (`assets/themes/*.css`) — minimal-white, editorial-serif, soft-pastel, sharp-mono, arctic-cool, sunset-warm, catppuccin-latte/mocha, dracula, tokyo-night, nord, solarized-light, gruvbox-dark, rose-pine, neo-brutalism, glassmorphism, bauhaus, swiss-grid, terminal-green, xiaohongshu-white, rainbow-gradient, aurora, blueprint, memphis-pop, cyberpunk-neon, y2k-chrome, retro-tv, japanese-minimal, vaporwave, midcentury, corporate-clean, academic-paper, news-broadcast, pitch-deck-vc, magazine-bold, engineering-whiteprint, netease-qa
 - **15 full-deck templates** (`templates/full-decks/<name>/`) — complete multi-slide decks with scoped `.tpl-<name>` CSS. 8 extracted from real-world decks (xhs-white-editorial, graphify-dark-graph, knowledge-arch-blueprint, hermes-cyber-terminal, obsidian-claude-gradient, testing-safety-alert, xhs-pastel-card, dir-key-nav-minimal), 7 scenario scaffolds (pitch-deck, product-launch, tech-sharing, weekly-report, xhs-post 3:4, course-module, **presenter-mode-reveal** — 演讲者模式专用)
 - **31 layouts** (`templates/single-page/*.html`) with realistic demo data
 - **27 CSS animations** (`assets/animations/animations.css`) via `data-anim`
@@ -87,7 +79,7 @@ prototype page (Page mode). If the intent is ambiguous, ask:
 
 1. **Content & audience.** What's the deck about, how many slides, who's
    watching (engineers / execs / 小红书读者 / 学生 / VC)?
-2. **Style / theme.** Which of the 36 themes fits? If unsure, recommend 2-3
+2. **Style / theme.** Which of the 37 themes fits? If unsure, recommend 2-3
    candidates based on tone:
    - Business / investor pitch → `pitch-deck-vc`, `corporate-clean`, `swiss-grid`
    - Tech sharing / engineering → `tokyo-night`, `dracula`, `catppuccin-mocha`,
@@ -285,7 +277,7 @@ Chinese + English deck, and how to export.
 
 ## Catalogs (load when needed)
 
-- [references/themes.md](references/themes.md) — all 36 themes with when-to-use.
+- [references/themes.md](references/themes.md) — all 37 themes with when-to-use.
 - [references/layouts.md](references/layouts.md) — all 31 layout types (Deck mode).
 - [references/animations.md](references/animations.md) — 27 CSS + 20 canvas FX animations.
 - [references/full-decks.md](references/full-decks.md) — all 15 full-deck templates.
