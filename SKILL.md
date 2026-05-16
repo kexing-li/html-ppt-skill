@@ -1,6 +1,7 @@
 ---
 name: html-studio
-description: HTML Studio — author professional static HTML presentations AND website prototype pages, all driven by a shared token-based design system with 37 themes. Use when the user asks for a presentation, PPT, slides, keynote, deck, slideshow, "幻灯片", "演讲稿", "做一份 PPT", "做一份 slides", a reveal-style HTML deck, a 小红书 图文, or any kind of multi-slide pitch/report/sharing document. Also use when the user asks for a website prototype, landing page, HTML page, web page, "网页", "网站", "原型", "做一个网页", "网站原型", "landing page", "website", "prototype", "HTML 页面", or any kind of static web page that should look polished. Two modes: **Deck** (keyboard-navigated slide presentations) and **Page** (document-flow web pages with responsive layout).
+description: >-
+  HTML Studio — author professional static HTML presentations AND website prototype pages, defaulting to the knowledge-arch-blueprint visual system for PPT, deck, slides, and polished single-page HTML unless the user asks for another style. Use when the user asks for a presentation, PPT, slides, keynote, deck, slideshow, "幻灯片", "演讲稿", "做一份 PPT", "做一份 slides", a reveal-style HTML deck, a 小红书 图文, or any kind of multi-slide pitch/report/sharing document. Also use when the user asks for a website prototype, landing page, HTML page, web page, "网页", "网站", "原型", "做一个网页", "网站原型", "landing page", "website", "prototype", "HTML 页面", or any kind of static web page that should look polished. Two modes: **Deck** (keyboard-navigated slide presentations) and **Page** (document-flow web pages with responsive layout).
 ---
 
 # html-studio — HTML Studio
@@ -79,30 +80,14 @@ prototype page (Page mode). If the intent is ambiguous, ask:
 
 1. **Content & audience.** What's the deck about, how many slides, who's
    watching (engineers / execs / 小红书读者 / 学生 / VC)?
-2. **Style / theme.** Which of the 37 themes fits? If unsure, recommend 2-3
-   candidates based on tone:
-   - Business / investor pitch → `pitch-deck-vc`, `corporate-clean`, `swiss-grid`
-   - Tech sharing / engineering → `tokyo-night`, `dracula`, `catppuccin-mocha`,
-     `terminal-green`, `blueprint`
-   - 小红书图文 → `xiaohongshu-white`, `soft-pastel`, `rainbow-gradient`,
-     `magazine-bold`
-   - Academic / report → `academic-paper`, `editorial-serif`, `minimal-white`
-   - Edgy / cyber / launch → `cyberpunk-neon`, `vaporwave`, `y2k-chrome`,
-     `neo-brutalism`
-3. **Starting point.** Default is `knowledge-arch-blueprint` (暗底 + 蓝图风，
-   适合技术分享和产品介绍). If the user's content points to a specific
-   scenario (e.g. "产品发布会" → `product-launch`, "投资人 pitch" →
-   `pitch-deck`), use that instead. Otherwise stick with the default.
+2. **Style / theme.** Default first to `knowledge-arch-blueprint` unless the user explicitly asks for another style. It uses a cream-paper background, black architectural lines, and rust-red emphasis; it is the house default for PPT, deck, slides, technical reports, and polished HTML visuals.
+3. **Starting point.** Copy `templates/full-decks/knowledge-arch-blueprint/` first for new decks. If the user's content clearly requires a special scenario (e.g. "演讲者模式" → `presenter-mode-reveal`, "产品发布会" → `product-launch`, "投资人 pitch" → `pitch-deck`), use that instead; otherwise stick with `knowledge-arch-blueprint`.
 
 ### Page mode — what to ask
 
 1. **Content & purpose.** What's the page for (landing page, dashboard,
    portfolio, product page…)? Who's the audience?
-2. **Style / theme.** Recommend 2-3 themes based on page type:
-   - Product / landing page → `minimal-white`, `soft-pastel`, `corporate-clean`
-   - Developer docs / dashboard → `tokyo-night`, `dracula`, `catppuccin-mocha`
-   - Portfolio / creative → `editorial-serif`, `magazine-bold`, `neo-brutalism`
-   - Marketing / startup → `pitch-deck-vc`, `aurora`, `rainbow-gradient`
+2. **Style / theme.** Default first to the `knowledge-arch-blueprint` look for normal HTML pages too: cream-paper background, black ink lines, rust-red emphasis, restrained cards, and blueprint-like grid texture. Only recommend other themes if the user asks for a different mood or the content clearly needs it.
 3. **Output format.** Self-contained single HTML file, or multi-file referencing
    shared assets?
 
@@ -110,23 +95,15 @@ A good opening message for Page mode:
 
 > 我可以给你做这个网页原型！先确认几件事：
 > 1. 页面用途和目标用户？
-> 2. 风格偏好？我建议：`minimal-white`（简洁大方）、`tokyo-night`（技术感）、`aurora`（现代渐变）。
+> 2. 风格默认用 `knowledge-arch-blueprint`（奶油纸底、黑色线框、锈红强调）；如果你想要别的风格再指定。
 > 3. 输出要单个自包含 HTML 文件，还是引用共享的样式资源？
 
 Only after those are clear, start writing.
 
 ## Deck mode — Quick start
 
-1. **Scaffold a new deck.** From the repo root:
-   ```bash
-   ./scripts/new-deck.sh my-talk
-   open examples/my-talk/index.html
-   ```
-2. **Pick a theme.** Open the deck and press `T` to cycle. Or hard-code it:
-   ```html
-   <link rel="stylesheet" id="theme-link" href="../assets/themes/aurora.css">
-   ```
-   Catalog in [references/themes.md](references/themes.md).
+1. **Start from the default full-deck template.** From the skill folder, copy `templates/full-decks/knowledge-arch-blueprint/` into the target output folder, then replace the demo content.
+2. **Use another theme only when needed.** If the user explicitly asks for a different visual mood, open the deck and press `T` to cycle themes or consult [references/themes.md](references/themes.md).
 3. **Pick layouts.** Copy `<section class="slide">...</section>` blocks out of
    files in `templates/single-page/` into your deck. Replace the demo data.
    Catalog in [references/layouts.md](references/layouts.md).
@@ -135,10 +112,7 @@ Only after those are clear, start writing.
    For canvas FX, use `<div data-fx="knowledge-graph">...</div>` and include
    `<script src="../assets/animations/fx-runtime.js"></script>`.
    Catalog in [references/animations.md](references/animations.md).
-5. **Use a full-deck template.** Copy `templates/full-decks/<name>/` into
-   `examples/my-talk/` as a starting point. Each folder is self-contained with
-   scoped CSS. Catalog in [references/full-decks.md](references/full-decks.md)
-   and gallery at `templates/full-decks-index.html`.
+5. **For non-default deck types.** If a scenario template is required, copy `templates/full-decks/<name>/` instead. Each folder is self-contained with scoped CSS. Catalog in [references/full-decks.md](references/full-decks.md) and gallery at `templates/full-decks-index.html`.
 6. **Render to PNG.**
    ```bash
    ./scripts/render.sh templates/theme-showcase.html       # one shot
@@ -148,13 +122,7 @@ Only after those are clear, start writing.
 ## Page mode — Quick start
 
 1. **Create a new HTML file** (e.g. `examples/my-page/index.html`).
-2. **Link the asset chain:**
-   ```html
-   <link rel="stylesheet" href="../../assets/fonts.css">
-   <link rel="stylesheet" href="../../assets/base.css">
-   <link rel="stylesheet" href="../../assets/page.css">
-   <link rel="stylesheet" href="../../assets/themes/minimal-white.css">
-   ```
+2. **Default visual system:** for polished static HTML pages, reuse the `knowledge-arch-blueprint` look: cream-paper background, black linework, rust-red emphasis, restrained white cards, and grid texture. If referencing shared assets, link `fonts.css`, `base.css`, and `page.css`; then add page-local CSS variables matching the blueprint palette.
 3. **Build with sections and base.css components:**
    ```html
    <body>
